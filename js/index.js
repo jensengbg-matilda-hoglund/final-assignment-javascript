@@ -6,12 +6,11 @@ let imgArray = [];
 // ---------------------------------------------- //
 
 // ---- SEARCH FUNCTION ---- //
-/* GLOBAL */
 
 const api_key = "&api_key=19d3e6e0acfe9c438f368e2c2bab1c5d"; // flickr-key
 let quantity = "5"; // number of imges shown
-const pages = "&page=1"; // Antal sidor som ska skapas,
-const userSearch = document.getElementById("search-field");
+const pages = "&page=1"; // Number of pages
+const userSearch = document.getElementById("search-field"); // input search
 
 async function getData() {
   const URL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api_key}&per_page=${quantity}&tags=${encodeURIComponent(
@@ -41,34 +40,18 @@ async function display() {
 
 /*
 ------- USER choose mount of images to show -----
-*input-field number, or checkboxes
-* ändra variabeln /
+- input-field number, or checkboxes
+- change the variable
 */
 
 /* 
 ---------- LIGHTBOX ----------
-- Klicka på en bild: Öppna bildens länk i lightbox
-- Stänga lightbox med kryssruta (och eventuellt esc)
+- Onclikc open lightbox,
+- cross field toclose, and maybe with esc button aswell.
 */
-
-/*
-------- SEARCH FUNCTION ------ 
-- Starta function med searchbutton
-- Ta sökord från inputfield
-- Skicka sökord till API
-- Hämta data från responsen
-- Omvandla data till img-länkar https://www.flickr.com/services/api/misc.urls.html
-- Visa på sida
- */
-
-/*
- ---- ANTAL BILDER PER SIDA ----
- - Ange antal bilder som ska visas  (Jag vill visa 5 bilder till att börja med)
- - Ange antal sidor man ska kunna bläddra (Prioritet: LÅG)
- */
 
 /* 
  --------- EXTRA ---------
- * Show related tags
- * Patricle JS background
+ -  Show related tags
+ -  Patricle JS background in header/hero section
  */
