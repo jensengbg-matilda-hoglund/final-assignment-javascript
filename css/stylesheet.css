@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #1a1b25;
+  --white: #fafafa;
+  --color: red;
+  --shadow: 5px 5px 20px -8px rgb(209, 209, 209);
+}
+
+body {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+/* ------- HERO SECTION ------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  width: 100vw;
+  height: 50vh;
+  background-image: url("../img/hero.jpg");
+  overflow: hidden;
+}
+
+h1 {
+  grid-row: 3/4;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+input {
+  grid-row: 4 / 5;
+  height: 3rem;
+  margin: 0 15%;
+  background: none;
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+
+button {
+  grid-row: 5 / 6;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  padding: 1rem 2rem;
+  background: none;
+  color: var(--white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  border: 2px solid var(--white);
+}
+/* ------- HERO END ------- */
+
+/* ------- GALLLERY ------- */
+.wrapper {
+  width: 100vw;
+  padding: 1rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  width: 100vw;
+}
+
+img {
+  width: 100%;
+}
