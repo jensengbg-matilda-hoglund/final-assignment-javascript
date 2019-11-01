@@ -17,7 +17,8 @@ async function getData() {
     userSearch.value
   )}&format=json`;
   let response = await fetch(URL, { method: "GET" });
-  let data = await response.json();
+  let data = await response;
+  console.log(data);
   return await data; // SOME SHITTY PROBLEM HERE?
 }
 
