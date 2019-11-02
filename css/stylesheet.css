@@ -5,71 +5,151 @@
 }
 
 :root {
-  --black: #1a1b25;
-  --white: #fafafa;
-  --color: red;
+  --black: #1c1c1c;
+  --white: #ffffff;
+  --pink: #db3069;
+  --blue: #84dcc6;
+  --background: #ffffff;
   --shadow: 5px 5px 20px -8px rgb(209, 209, 209);
+}
+
+input[type="text"]:focus {
+  outline: none;
 }
 
 body {
   font-family: "Nanum Gothic", sans-serif;
+  width: 100vw;
 }
 
 /* ------- HERO SECTION ------- */
 .hero {
+  padding-top: 5%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 1fr);
   width: 100vw;
   height: 50vh;
-  background-image: url("../img/hero.jpg");
-  overflow: hidden;
+  background: var(--pink);
 }
 
-h1 {
-  grid-row: 3/4;
-  color: var(--white);
+.hero i {
+  display: flex;
+  justify-self: center;
+  color: var(--black);
+  opacity: 0.98;
+  margin-bottom: -2.5rem;
+}
+
+.hero h1 {
+  color: var(--black);
+  text-align: center;
+  font-family: "Dosis", sans-serif;
   text-transform: uppercase;
   letter-spacing: 5px;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+/* ----- SERARCHBAR ------ */
+.search {
+  display: flex;
+  width: 20rem;
+  height: 3rem;
+  background: var(--black);
+  border: none;
+  border-radius: 25px;
+  justify-self: center;
+  align-items: center;
+  margin-bottom: -2.5rem;
+}
+
+.search-input {
+  display: flex;
+  background: none;
+  color: var(--white);
+  border: none;
+  height: 2rem;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.search-input::placeholder {
+  color: var(--white);
+  font-weight: 100;
+}
+/* --- SEARCH SETTINGS --- */
+.quantity-input,
+.quantity-input::before {
+  background: var(--white);
+  display: flex;
+  color: var(--black);
+  font-size: 1rem;
+  width: 5rem;
+  padding-right: 0.5rem;
+  height: inherit;
+  border-radius: 0 25px 25px 0;
+  border: none;
   text-align: center;
 }
 
-input {
-  grid-row: 4 / 5;
-  height: 3rem;
-  margin: 0 15%;
-  background: none;
-  border: 1px solid var(--white);
-  color: var(--white);
+.quantity-input[type="number"]:focus {
+  outline: none;
 }
 
-button {
-  grid-row: 5 / 6;
+/* --- SEARCH BUTTON --- */
+.search-section {
   display: flex;
   justify-self: center;
   align-self: center;
-  padding: 1rem 2rem;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 0.3rem;
+}
+
+.search-button {
   background: none;
-  color: var(--white);
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  justify-self: center;
+  align-self: center;
+  font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 5px;
-  border: 2px solid var(--white);
 }
+.search-button[type="search"]:focus {
+  outline: none;
+}
+
+.search-button i {
+  display: flex;
+  color: var(--black);
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
 /* ------- HERO END ------- */
 
 /* ------- GALLLERY ------- */
 .wrapper {
   width: 100vw;
+  display: grid;
   padding: 1rem;
 }
 
 .gallery {
+  width: 100%;
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   gap: 1rem;
-  width: 100vw;
+  background: none;
 }
 
 img {
   width: 100%;
+  margin-bottom: 1rem;
 }
