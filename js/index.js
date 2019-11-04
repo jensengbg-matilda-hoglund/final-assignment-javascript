@@ -1,7 +1,7 @@
 /*
 -------------- ATT GÖRA -------------
-* Söka på bilder med ESC-knapp
-* Varje ny sökning ska nollställa resultatet från förra sökningen
+* LIGHTBOX
+* FILTER (images/page) ---- / extra: color, size, style
 *
 */
 
@@ -11,7 +11,7 @@ const userSearch = document.getElementById("search-field"); // user input search
 
 async function getData() {
   // RESET BOTH ARRAYS AFTER IMAGES ARE DISPLAYED IN GALLERY SECTION
-  const URL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&media=photos&per_page=50&sort=interestingness_desc&page=8&tag_mode=all&api_key=${api_key}&sort=relevance&tags=${encodeURIComponent(
+  const URL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&media=photos&per_page=&sort=relevance&page=1&tag_mode=all&api_key=${api_key}&sort=relevance&tags=${encodeURIComponent(
     userSearch.value
   )}&format=json&nojsoncallback=1`;
   let response = await fetch(URL, { method: "GET" });
@@ -41,16 +41,16 @@ createURL = imgArray => {
 // ----------------------------------------- //
 
 // Search-button
-const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", getData);
+document.getElementById("search-button").addEventListener("click", getData);
 
-//Tryck ENTER för att söka
-const enterSearch = document.getElementById("search-field");
-enterSearch.addEventListener("keydown", function(e) {
-  if (e.keyCode === 13) {
-    getData();
-  }
-});
+// ENTER-knapp
+document
+  .getElementById("search-field")
+  .addEventListener("keydown", function(e) {
+    if (e.keyCode === 13) {
+      getData();
+    }
+  });
 
 // DISPLAY GALLERY
 const gallerySection = document.getElementById("flickr-gallery"); // GLOBAL varable
@@ -71,15 +71,12 @@ createImage = urlArray => {
   urlArray = [];
 };
 
-// RESET SEARCHFIELD WHIT X-button
-resetSearch = () => {
+// X-button reset
+document.getElementById("reset-search").addEventListener("click", function(e) {
   userSearch.value = "";
-};
+});
 
-const clearInput = document.getElementById("reset-search");
-clearInput.addEventListener("click", resetSearch);
-
-// ------------------ THE END ------------- //
+// ------------------ THE FUCKING END OF MY SUPER FUCKING AWESOME CODE ------------- //
 /*
 ------- USER choose mount of images to show -----
 - input-field number, or checkboxes

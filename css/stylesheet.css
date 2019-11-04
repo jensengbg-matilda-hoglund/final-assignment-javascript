@@ -11,10 +11,10 @@ font-family: 'Lato', sans-serif;
 
 :root {
   --black: #1c1c1c;
-  --white: #ffffff;
-  --pink: #db3069;
-  --blue: #84dcc6;
+  --white: #f2f4f4;
   --background: #46445f;
+  --border: #f2f4f4;
+  --header: #ce7d97;
   --shadow: ;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 .header h1 {
-  color: var(--white);
+  color: var(--header);
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   letter-spacing: 6px;
@@ -173,7 +173,6 @@ input:-internal-autofill-selected {
 /* --------------------- GALLLERY ------------------- */
 
 .gallery {
-  border-top: 3px solid var(--white);
   padding: 3%;
   width: 100%;
   height: 100%;
@@ -182,23 +181,30 @@ input:-internal-autofill-selected {
   justify-content: space-around;
   align-items: center;
   background-color: var(--background);
+  border-top: 0.5rem solid var(--border);
 }
 
 /* each div for each url */
 .img-container {
   display: flex;
   margin: 0.5rem;
-  max-width: 10rem;
-  max-height: 10rem;
+  height: 5rem;
+  max-width: 5rem;
 }
 
-/* Ech IMG with URL */
+/* Each IMG with URL */
 .gallery-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border: 0.5rem solid var(--white);
+  border: 2px solid var(--border);
 }
+
+/*
+
 
 DESKTOP @media only screen and (min-width: 600px) {
 }
+
+
+*/
