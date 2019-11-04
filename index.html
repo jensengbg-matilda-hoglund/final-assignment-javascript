@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css?family=Dosis:800|Lato:700&display=swap"
+      href="https://fonts.googleapis.com/css?family=Lato|Montserrat:400,700,900&display=swap"
       rel="stylesheet"
     />
+    <!--google font-->
+
     <script
       src="https://kit.fontawesome.com/28ec47744a.js"
       crossorigin="anonymous"
@@ -15,40 +17,25 @@
     <title>Final assignment JavaScript</title>
   </head>
   <body>
-    <section class="hero">
-      <i class="fas fa-image fa-5x"></i>
-      <h1>Image search</h1>
-      <section class="search">
-        <input
-          type="text"
-          id="search-field"
-          class="search-input"
-          placeholder="Search by tags"
-        />
-        <input
-          type="number"
-          list="quantity-values"
-          id="desired-quantity"
-          class="quantity-input"
-          name="quantity"
-          placeholder="1-100"
-        />
-      </section>
-      <section class="search-section">
-        <h2>search</h2>
-        <button type="search" class="search-button" id="search-button">
-          Search</button
-        ><i class="fa fa-search"></i>
-        <!--
-        <datalist id="quantity-values">
-          <option value="10"> </option>
-          <option value="25"> </option>
-          <option value="50"> </option>
-          <option value="100"> </option>
-        </datalist>-->
-      </section>
-    </section>
-    <div class="wrapper">
+    <div class="wrap">
+      <header class="header-container">
+        <section class="header">
+          <h1>Image search</h1>
+          <section class="search-section">
+            <button type="submit" class="search-button" id="search-button">
+              <i class="fa fa-search"></i>
+            </button>
+            <section class="input-section">
+              <input type="text" class="search-input" id="search-field" />
+              <button class="close-icon" id="reset-search" type="reset">
+                <i class="fas fa-times"></i>
+              </button>
+            </section>
+          </section>
+          <section class="filter"><h2>Filter by</h2></section>
+          <!--Wait til after talking with Chrille-->
+        </section>
+      </header>
       <section id="flickr-gallery" class="gallery"></section>
     </div>
     <script src="js/index.js"></script>

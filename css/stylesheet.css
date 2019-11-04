@@ -1,3 +1,8 @@
+/* 
+font-family: 'Montserrat', sans-serif;
+font-family: 'Lato', sans-serif;
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -9,147 +14,191 @@
   --white: #ffffff;
   --pink: #db3069;
   --blue: #84dcc6;
-  --background: #ffffff;
-  --shadow: 5px 5px 20px -8px rgb(209, 209, 209);
-}
-
-input[type="text"]:focus {
-  outline: none;
+  --background: #46445f;
+  --shadow: ;
 }
 
 body {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  color: var(--white);
   width: 100vw;
+  background-color: var(--background);
+}
+
+.wrap {
+  display: grid;
+  width: 100vw;
+  height: end;
+  background: var(--background);
 }
 
 /* ------- HERO SECTION ------- */
-.hero {
-  padding-top: 5%;
-  display: grid;
-  grid-template-columns: 1fr;
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: 100vw;
   height: 50vh;
-  background: var(--pink);
+  background-image: linear-gradient(
+      to bottom,
+      rgb(255, 255, 255),
+      rgba(50, 46, 107, 0.445)
+    ),
+    url("../img/sky.desktop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero i {
+.header {
+  margin: 15% 0;
   display: flex;
-  justify-self: center;
-  color: var(--black);
-  opacity: 0.98;
-  margin-bottom: -2.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.hero h1 {
-  color: var(--black);
-  text-align: center;
-  font-family: "Dosis", sans-serif;
+.header h1 {
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 900;
-  font-size: 2rem;
+  letter-spacing: 6px;
+  font-weight: 500;
+  font-size: 1.6rem;
 }
 
 /* ----- SERARCHBAR ------ */
-.search {
+.search-section {
   display: flex;
-  width: 20rem;
-  height: 3rem;
-  background: var(--black);
+  justify-content: center;
+  width: 80%;
+  height: 2.5rem;
+}
+/* --- BUTTON --- */
+.search-button {
+  background: transparent;
   border: none;
-  border-radius: 25px;
-  justify-self: center;
-  align-items: center;
-  margin-bottom: -2.5rem;
+  align-self: flex-end;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+/* button icon */
+.search-button i {
+  padding-right: 0.5rem;
+  font-size: 1.35rem;
+  color: var(--white);
+}
+
+/* Seach input field */
+.input-section {
+  display: flex;
+  align-items: flex-end;
+  width: 20rem;
+  height: 2.5rem;
+  border-bottom: 2px solid var(--white);
+  box-shadow: none;
 }
 
 .search-input {
   display: flex;
-  background: none;
-  color: var(--white);
+  background: transparent;
   border: none;
-  height: 2rem;
+  color: var(--white);
   width: 100%;
-  padding-left: 1rem;
-}
-
-.search-input::placeholder {
-  color: var(--white);
-  font-weight: 100;
-}
-/* --- SEARCH SETTINGS --- */
-.quantity-input,
-.quantity-input::before {
-  background: var(--white);
-  display: flex;
-  color: var(--black);
-  font-size: 1rem;
-  width: 5rem;
-  padding-right: 0.5rem;
-  height: inherit;
-  border-radius: 0 25px 25px 0;
-  border: none;
-  text-align: center;
-}
-
-.quantity-input[type="number"]:focus {
-  outline: none;
-}
-
-/* --- SEARCH BUTTON --- */
-.search-section {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  background: var(--white);
-  border-radius: 10px;
-  padding: 0.3rem;
-}
-
-.search-button {
-  background: none;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  justify-self: center;
-  align-self: center;
-  font-weight: 600;
-  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  font-weight: 300;
+  font-family: "Lato";
   text-transform: uppercase;
-  letter-spacing: 5px;
+  padding-bottom: 0.25rem;
 }
-.search-button[type="search"]:focus {
+
+input[type="search"] {
+  background: transparent;
+  border: 0px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+input:-internal-autofill-selected {
+  background: transparent !important;
+  background-image: none !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Remove original search X, hard to style. */
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Remove outerline while focused */
+.search-button[type="submit"]:focus {
+  outline: none;
+}
+.search-input:focus {
+  background: none;
   outline: none;
 }
 
-.search-button i {
+/* X-close */
+.close-icon {
   display: flex;
-  color: var(--black);
-  padding-right: 0.5rem;
-  font-size: 1.5rem;
+  border: 1px solid transparent;
+  background-color: transparent;
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  color: var(--white);
 }
 
-/* ------- HERO END ------- */
+/* Filter bar */
 
-/* ------- GALLLERY ------- */
-.wrapper {
-  width: 100vw;
-  display: grid;
-  padding: 1rem;
+.filter {
+  display: flex;
 }
+
+.filter h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  letter-spacing: 3px;
+}
+
+/* --------------------- HERO END -------------------- */
+
+/* --------------------- GALLLERY ------------------- */
 
 .gallery {
+  border-top: 3px solid var(--white);
+  padding: 3%;
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-  background: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--background);
 }
 
-img {
+/* each div for each url */
+.img-container {
+  display: flex;
+  margin: 0.5rem;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+/* Ech IMG with URL */
+.gallery-img {
+  height: 100%;
   width: 100%;
-  margin-bottom: 1rem;
+  object-fit: cover;
+  border: 0.5rem solid var(--white);
+}
+
+DESKTOP @media only screen and (min-width: 600px) {
 }
