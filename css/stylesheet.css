@@ -11,7 +11,7 @@ font-family: 'Lato', sans-serif;
 
 :root {
   --black: #1c1c1c;
-  --white: #f2f4f4;
+  --white: #ffffff;
   --background: #46445f;
   --border: #f2f4f4;
   --header: #ce7d97;
@@ -29,7 +29,6 @@ body {
 .wrap {
   display: grid;
   width: 100vw;
-  height: end;
   background: var(--background);
 }
 
@@ -51,12 +50,11 @@ body {
 }
 
 .header {
-  margin: 15% 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 2.5rem;
 }
 
 .header h1 {
@@ -64,16 +62,17 @@ body {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   letter-spacing: 6px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.6rem;
+  text-align: center;
 }
 
 /* ----- SERARCHBAR ------ */
 .search-section {
   display: flex;
-  justify-content: center;
   width: 80%;
   height: 2.5rem;
+  margin: 2.5rem 0;
 }
 /* --- BUTTON --- */
 .search-button {
@@ -114,6 +113,10 @@ body {
   text-transform: uppercase;
   padding-bottom: 0.25rem;
 }
+.search-input::placeholder {
+  margin-left: 2.5px;
+  font-size: 0.8rem;
+}
 
 input[type="search"] {
   background: transparent;
@@ -149,10 +152,37 @@ input:-internal-autofill-selected {
   display: flex;
   border: 1px solid transparent;
   background-color: transparent;
-  display: inline-block;
   outline: 0;
   cursor: pointer;
   color: var(--white);
+  bottom: 0;
+  padding-bottom: 5px;
+}
+
+/* ---- FILTERS SECTION ----- */
+.filter-icon {
+  display: flex;
+  align-items: center;
+  margin-top: -1.5rem;
+  border: none;
+  background: none;
+  font-size: 0.8rem;
+  color: var(--black);
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.filter-icon i {
+  margin-left: 0.6rem;
+  font-size: 1rem;
+  color: var(--black);
+  opacity: 0.8;
+}
+.filter-container {
+  display: block;
 }
 
 /* Filter bar */
@@ -161,50 +191,61 @@ input:-internal-autofill-selected {
   display: flex;
 }
 
-.filter h2 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: 100;
-  letter-spacing: 3px;
+.filters .desktop {
+  display: none;
 }
+
+/* FILTER PATTERNS */
+/*
+base URL: "https://www.flickr.com/search/?text=style%20filter&group_id=51035612836%40N01&styles=pattern"
+        "https://www.flickr.com/search/?text=style%20filter&group_id=51035612836%40N01&styles=pattern"
 
 /* --------------------- HERO END -------------------- */
 
-/* --------------------- GALLLERY ------------------- */
+/*-------------------- LIGHTBOX -------------------- */
 
-.gallery {
-  padding: 3%;
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  background-color: var(--background);
-  border-top: 0.5rem solid var(--border);
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-content: center;
 }
 
-/* each div for each url */
-.img-container {
-  display: flex;
-  margin: 0.5rem;
-  height: 5rem;
-  max-width: 5rem;
-}
-
-/* Each IMG with URL */
-.gallery-img {
+.lightbox-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border: 2px solid var(--border);
 }
 
-/*
-
-
-DESKTOP @media only screen and (min-width: 600px) {
+/* --------------------- GALLLERY ------------------- */
+.flex-wrap {
+  width: 100vw;
+  height: 200px;
 }
 
+/* Prevent vertical gaps */
+.gallery {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-*/
+/* each div for each url */
+.img-container {
+  margin: 1rem 0;
+}
+
+.gallery-img {
+  width: 100%;
+  object-fit: contain;
+}

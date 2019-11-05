@@ -20,36 +20,61 @@
     <div class="wrap">
       <header class="header-container">
         <section class="header">
-          <h1>Image search</h1>
+          <h1>It's almost flickR!</h1>
           <section class="search-section">
             <button type="submit" class="search-button" id="search-button">
               <i class="fa fa-search"></i>
             </button>
             <section class="input-section">
-              <input type="text" class="search-input" id="search-field" />
+              <input
+                placeholder="There is no spoon"
+                type="text"
+                class="search-input"
+                id="search-field"
+              />
               <button class="close-icon" id="reset-search" type="reset">
                 <i class="fas fa-times"></i>
               </button>
             </section>
           </section>
 
+          <button class="filter-icon">
+            <p>Filters</p>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
           <section class="filter-container">
-            <p>Filter</p>
             <section class="filters">
-              <section class="amount">
-                (add filter options here later)
-              </section>
+              <select name="numberof" id="number-of-images">
+                <option value="">Per page</option>
+                <option value="200">200</option>
+                <option value="100">100</option>
+                <option value="50">50</option>
+                <option value="25">25</option>
+              </select>
+
+              <select name="size" id="image-size">
+                <option value="">Image size</option>
+                <option class="mobile" value="s">Small</option>
+                <option class="mobile" value="q">Medium</option>
+                <option class="mobile" value="n">Large</option>
+                <option class="desktop" value="m">Small</option>
+                <option class="desktop" value="-">Medium</option>
+                <option class="desktop" value="b">Large</option>
+              </select>
             </section>
           </section>
-          <!--Wait til after talking with Chrille-->
         </section>
       </header>
+
+      <!--Wait til after talking with Chrille-->
       <!-- o-click i JS att skicka in URL här -->
-      <section id="flickr-gallery" class="gallery">
-        <section class="overlay">
-          <img src="" alt="" />
-        </section>
+      <section id="lightbox-overlay" class="overlay">
+        <img id="lightbox-image" class="lightbox-img" src="" alt="" />
       </section>
+      <div class="flex-wrap">
+        <section id="flickr-gallery" class="gallery"></section>
+      </div>
     </div>
     <script src="js/index.js"></script>
   </body>
