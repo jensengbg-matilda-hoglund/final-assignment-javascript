@@ -10,112 +10,91 @@ font-family: 'Lato', sans-serif;
 }
 
 :root {
-  --black: #1c1c1c;
-  --white: #ffffff;
-  --background: #46445f;
-  --border: #f2f4f4;
-  --header: #ce7d97;
+  --black: #2b2c2f;
+  --gallery: #e4e1f7;
+  --background: #f0f5ff;
+  --white: #e8f0ff;
+  --border: #2b2c2f;
   --shadow: ;
 }
 
 body {
-  font-family: "Lato", sans-serif;
   font-weight: 900;
   color: var(--white);
   width: 100vw;
-  background-color: var(--background);
+  height: 100vh;
+  background: var(--background);
+}
+
+p {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: var(--black);
+  font-size: 0.75rem;
+  align-self: center;
 }
 
 .wrap {
   display: grid;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  background-image: var(--background);
+}
+
+/* ------- HEADER SECTION ------- */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 22vh;
+  position: fixed;
   background: var(--background);
 }
 
-/* ------- HERO SECTION ------- */
-.header-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  width: 100vw;
-  height: 50vh;
-  background-image: linear-gradient(
-      to bottom,
-      rgb(255, 255, 255),
-      rgba(50, 46, 107, 0.445)
-    ),
-    url("../img/sky.desktop.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 2.5rem;
-}
-
-.header h1 {
-  color: var(--header);
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  font-weight: 600;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
 /* ----- SERARCHBAR ------ */
-.search-section {
-  display: flex;
-  width: 80%;
-  height: 2.5rem;
-  margin: 2.5rem 0;
-}
-/* --- BUTTON --- */
+
 .search-button {
   background: transparent;
   border: none;
-  align-self: flex-end;
-  padding-right: 5px;
   cursor: pointer;
 }
 
 /* button icon */
 .search-button i {
-  padding-right: 0.5rem;
-  font-size: 1.35rem;
-  color: var(--white);
+  font-size: 2rem;
+  color: var(--black);
 }
 
 /* Seach input field */
 .input-section {
   display: flex;
-  align-items: flex-end;
-  width: 20rem;
-  height: 2.5rem;
-  border-bottom: 2px solid var(--white);
+  padding: 0.5rem;
+  width: 100%;
+  height: 3rem;
+  border: none;
   box-shadow: none;
+  background: var(--background);
+  border-bottom: 2px solid var(--border);
 }
 
 .search-input {
   display: flex;
   background: transparent;
   border: none;
-  color: var(--white);
+  color: var(--black);
   width: 100%;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 600;
   font-family: "Lato";
-  text-transform: uppercase;
-  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
 }
+
 .search-input::placeholder {
-  margin-left: 2.5px;
-  font-size: 0.8rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+  color: var(--black);
+  font-weight: 300;
 }
 
 input[type="search"] {
@@ -133,80 +112,267 @@ input:-internal-autofill-selected {
   color: rgb(0, 0, 0) !important;
 }
 
-/* Remove original search X, hard to style. */
+/* X-reset */
+.reset-icon {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--black);
+  font-size: large;
+}
+
+/* Remove original search X */
 ::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
 /* Remove outerline while focused */
-.search-button[type="submit"]:focus {
+.search-button[type="submit"]:focus,
+.search-input:focus,
+.filter-icon:focus,
+.reset-icon:focus,
+#number-of-images:focus,
+.settings-dropdowns:focus,
+.image-size:focus,
+option:focus,
+.mobile:focus,
+.desktop:focus {
   outline: none;
 }
-.search-input:focus {
-  background: none;
-  outline: none;
-}
 
-/* X-close */
-.close-icon {
+/* ----- SEARCHBAR END ----- */
+
+/*  ------- ADVANCED FILTER ------ */
+
+.advanced-settings {
   display: flex;
-  border: 1px solid transparent;
-  background-color: transparent;
-  outline: 0;
-  cursor: pointer;
-  color: var(--white);
-  bottom: 0;
-  padding-bottom: 5px;
+  flex-direction: row-reverse;
+  margin: 0.25rem;
 }
 
-/* ---- FILTERS SECTION ----- */
-.filter-icon {
-  display: flex;
-  align-items: center;
-  margin-top: -1.5rem;
-  border: none;
-  background: none;
-  font-size: 0.8rem;
-  color: var(--black);
-  opacity: 0.8;
-  text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  letter-spacing: 2px;
+.style-list {
+  display: grid;
+  grid-template-columns: 40px 40px;
+  grid-template-rows: 40px 40px;
 }
 
-.filter-icon i {
-  margin-left: 0.6rem;
-  font-size: 1rem;
-  color: var(--black);
-  opacity: 0.8;
+#red {
+  background-color: #ff2000;
 }
-.filter-container {
-  display: block;
+#orange {
+  background-color: #ff7c00;
+}
+#pale-pink {
+  background-color: #ff9f9c;
+}
+#lemon-yellow {
+  background-color: #fffa00;
+}
+#bus-yellow {
+  background-color: #ffcf00;
+}
+#green {
+  background-color: #90e200;
+}
+#dark-green {
+  background-color: #00ab00;
+}
+#cyan {
+  background-color: #00b2d4;
+}
+#blue {
+  background-color: #0062c6;
+}
+#violet {
+  background-color: #8c20ba;
+}
+#pink {
+  background-color: #f52394;
+}
+#white {
+  background-color: #ffffff;
+}
+#grey {
+  background-color: #7c7c7c;
+}
+#black {
+  background-color: #000000;
 }
 
-/* Filter bar */
-
-.filter {
-  display: flex;
+.style-button {
+  border: 2px solid var(--white);
+  width: 40px;
+  height: 40px;
 }
 
-.filters .desktop {
+#black-and-white {
+  background-image: url(../img/blackandwhite.jpg);
+  background-size: cover;
+}
+
+#depth-of-field {
+  background-image: url(../img/shallowdepth.jpg);
+  background-size: cover;
+}
+#minimalist {
+  background-image: url(../img/minimalism.jpg);
+  background-size: cover;
+}
+#patterns {
+  background-image: url(../img/pattern.jpg);
+  background-size: cover;
+}
+
+/* options only for desktop mode */
+.desktop {
   display: none;
 }
+/* --------COLOR CHECKBOXES-------- */
 
-/* FILTER PATTERNS */
-/*
-base URL: "https://www.flickr.com/search/?text=style%20filter&group_id=51035612836%40N01&styles=pattern"
-        "https://www.flickr.com/search/?text=style%20filter&group_id=51035612836%40N01&styles=pattern"
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+}
 
-/* --------------------- HERO END -------------------- */
+.color {
+  display: inline-block;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+/* ----- SETTINGS START ----- */
+
+.page-settings {
+  display: flex;
+  padding: 0 0.5rem;
+  height: 3em;
+  background: var(--background);
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--black);
+  z-index: 2;
+  justify-content: space-between;
+}
+
+.image-size {
+  background: var(--background);
+  border: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: var(--black);
+  font-size: 1rem;
+  -webkit-appearance: none;
+  background-image: url(../img/down-arrow.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 0.9rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.images-per-page {
+  background: var(--background);
+  border: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: var(--black);
+  font-size: 1rem;
+  -webkit-appearance: none;
+  background-image: url(../img/down-arrow.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 0.9rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.page-section {
+  display: flex;
+  width: 5rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.page-section i {
+  font-size: 1.5rem;
+  color: var(--black);
+}
+
+#page-number {
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+/* --------------------- HEADER END -------------------- */
+
+/* --------------------- GALLLERY --------------------- */
+
+.gallery {
+  width: 100%;
+  height: 70vh;
+  margin-top: 25vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow: scroll;
+}
+
+/* each div for each url */
+.img-container {
+  margin: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.gallery-img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.gallery-img:hover {
+  transform: scale(1.5);
+}
+
+/* --------------------- PAGES ------------------- */
+.api-pages {
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 2.5rem;
+  bottom: 0;
+  position: fixed;
+}
+
+.page-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-self: center;
+  width: 10rem;
+  border-top: 1px solid var(--white);
+  cursor: pointer;
+}
+
+.page {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  padding: 8px;
+}
+.page:hover {
+  transform: scale(1.3);
+  color: var(--grey);
+}
 
 /*-------------------- LIGHTBOX -------------------- */
 
 .overlay {
   display: none;
   position: fixed;
+  flex-direction: column;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -214,38 +380,30 @@ base URL: "https://www.flickr.com/search/?text=style%20filter&group_id=510356128
   left: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.548);
   justify-content: center;
-  align-content: center;
+}
+
+.lightbox-close {
+  z-index: 3;
+  position: absolute;
+  display: flex;
+  color: var(--white);
+  opacity: 0.9;
+  font-size: 2rem;
+  align-self: flex-end;
+  height: 90%;
+  width: 15%;
 }
 
 .lightbox-img {
-  height: 100%;
-  width: 100%;
+  z-index: 2;
+  align-self: center;
+  max-width: 350px;
+  height: auto;
   object-fit: cover;
-  border: 2px solid var(--border);
-}
-
-/* --------------------- GALLLERY ------------------- */
-.flex-wrap {
-  width: 100vw;
-  height: 200px;
-}
-
-/* Prevent vertical gaps */
-.gallery {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* each div for each url */
-.img-container {
-  margin: 1rem 0;
-}
-
-.gallery-img {
-  width: 100%;
-  object-fit: contain;
+  position: fixed;
+  background-image: url(../img/x.png);
+  background-attachment: fixed;
+  background-position: top;
 }

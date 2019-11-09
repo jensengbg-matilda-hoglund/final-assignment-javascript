@@ -1,67 +1,39 @@
-/*
--------------- ATT GÖRA -------------
-* LIGHTBOX
-* FILTER (images/page) ---- / extra: color, size.
-* STYLA bilderna så det blir space mellan eller inga rader.
-*/
+import getData from "./API-getData.js";
+import createURL from "./createURL.js";
 
-/*
-IMG SIZES
-- small = 
-*/
-
-// API-URL (hämta all data från flickR)
+// API-URL ( get data with flickr API )
 const api_key = "19d3e6e0acfe9c438f368e2c2bab1c5d"; // my flickR API-key
 const userSearch = document.getElementById("search-field"); // user input search
 const quantity = document.getElementById("number-of-images"); // user images select
-const imageSize = document.getElementById("image-size");
-
-async function getData() {
-  // RESET BOTH ARRAYS AFTER IMAGES ARE DISPLAYED IN GALLERY SECTION
-  const URL = `https://www.flickr.com/services/rest/?method=flickr.photos.search&m
-  edia=photos&per_page=${encodeURIComponent(
-    quantity.value
-  )}&sort=relevance&page=1&tag_mode=all&api_key=${api_key}&sort=relevance&tags=${encodeURIComponent(
-    userSearch.value
-  )}&format=json&nojsoncallback=1`;
-  let response = await fetch(URL, { method: "GET" });
-  let data = await response.json();
-  let object = await data; // Whole JSON object, dont need that crap soo -->>
-  let imgArray = object.photos.photo; // ... let's only take info about the image which is stored as an array.
-  createURL(imgArray); // Now lets pass this array into the next function createURL.
-}
-
-// MAKING URL from API data
-createURL = imgArray => {
-  document.querySelectorAll(".img-container").forEach(n => n.remove()); // Remove previous IMG & DIV elements
-  document.querySelectorAll(".gallery-img").forEach(n => n.remove());
-
-  let urlArray = imgArray.map(index => {
-    return `https://farm${index.farm}.staticflickr.com/${index.server}/${index.id}_${index.secret}_${imageSize.value}.jpg`;
-  });
-
-  createImage(urlArray); // Sending this variable to the next function
-  console.log(urlArray); // Look in the console to see if our URL's look's like we want them to.
-};
-// ---------------------------------------------------- //
+const imageSize = document.getElementById("size");
 
 // Search-button
-document.getElementById("search-button").addEventListener("click", getData);
+document
+  .getElementById("submit-search")
+  .addEventListener("click", async function(event) {
+    let nextPage = event.srcElement.attributes[0].value;
+    let imgArray = await getData(api_key, userSearch, quantity);
+    let urlArray = createURL(imgArray); // Now lets pass this array into the next function createURL.
+    createImage(urlArray);
+    imgArray = [];
+    urlArray = [];
+  });
+
 // Enter-KEY search
 document
   .getElementById("search-field")
-  .addEventListener("keydown", function(event) {
+  .addEventListener("keydown", async function(event) {
     if (event.keyCode === 13) {
-      getData();
+      let imgArray = await getData(api_key, userSearch, quantity);
+      let urlArray = createURL(imgArray); // Now lets pass this array into the next function createURL.
+      createImage(urlArray);
     }
   });
-
-//-------------------------------------------------------//
 
 // DISPLAY GALLERY
 const gallerySection = document.getElementById("flickr-gallery"); // GLOBAL varable
 
-createImage = urlArray => {
+const createImage = urlArray => {
   for (let i = 0; i < urlArray.length; i++) {
     const newDiv = document.createElement("div"); // create new div element for each URL
     const newImage = document.createElement("img"); // -||- img element
@@ -73,56 +45,83 @@ createImage = urlArray => {
     newImage.addEventListener("click", function(event) {
       lightbox(event);
     });
-
-    //newImage.addEventListener("click", function(e) { console.log(e); });
-    // --- REAPEAT for each element in my URL array --- //
   }
-  imgArray = [];
-  urlArray = [];
 };
+const overlay = document.getElementById("lightbox-overlay");
+const lightboxImage = document.getElementById("lightbox-image");
+
+// LIGHTBOX
+const lightbox = event => {
+  lightboxImage.src = event.srcElement.attributes[0].value.replace(
+    "_" + imageSize.value, // get url and change img-size
+    "_b"
+  );
+  overlay.appendChild(lightboxImage);
+  overlay.style.display = "flex";
+  overlay.addEventListener("click", function() {
+    this.style.display = "none";
+  });
+};
+
+// Switch page  FÖRENKLA SENARE MED BARA PILAR
+const selectPage = () => {
+  const pages = document.getElementsByClassName("page");
+  for (let i = 0; i < pages.length; i++) {
+    pages[i].addEventListener("click", async function(event) {
+      let nextPage = event.srcElement.attributes[0].value;
+      let imgArray = await getData(api_key, userSearch, quantity, nextPage);
+      let urlArray = createURL(imgArray); // Now lets pass this array into the next function createURL.
+      createImage(urlArray);
+    });
+  }
+};
+selectPage();
 
 // X-button reset
 document.getElementById("reset-search").addEventListener("click", function(e) {
   userSearch.value = "";
 });
 
+// --------------------------------------------------------
+
+// flickr custom search STYLES
+/*
+const imgStyle = () => {
+  const styleFilter = document.getElementsByClassName("style-button");
+  for (let i = 0; i < styleFilter.length; i++) {
+    styleFilter[i].addEventListener("click", async function(event) {
+      if (styleFilter[i].className === "checked") {
+        let styling = event.target.attributes[2].value;
+        let imgArray = await getData(api_key, userSearch, quantity, 1, styling);
+        let urlArray = createURL(imgArray);
+        createImage(urlArray);
+        imgArray = [];
+        urlArray = [];
+      }
+    });
+  }
+};
+imgStyle();
+//-----------------------------------------------------------*/
+
 // ------------------ THE FUCKING END OF MY SUPER FUCKING AWESOME CODE ------------- //
 
-/* 
----------- LIGHTBOX ----------
-- Click on image                                                          %
-- Start lightbox function                                                 %
-- Function locate URL from the clicked IMG                                %
-- Function "sends" URL to element in HTML                                 %
-- Element in HTML changes from "none" to flex.                            %
-- add buttons/icons in overlay to display in fron of img, z-index 2.      %
+/*     A T T    G Ö R A 
+
+---------- MOBILE ----------
+
 - style IMG in html-lightbox
-- Make buttons in html element work ex: next, previous, close/esc
-- close button make element display: none again
-- next/previous WTFi dont know
+
+- styla image galleri mobile (hover, shadow, border etc)
+
+- lägg till press enter på allt så den söker efter bilder
+
+-------- DESKOP -----------
+
+- styla, responsivt m.m
+- ändra i  css display non på mobile etc.... även i JavaScript ändra disabled/selected
+- styla lightbox i desktop
+- lägg till färgsökningar som i flcikr :D :D :D
+
+
 */
-
-const overlay = document.getElementById("lightbox-overlay");
-const lightboxImage = document.getElementById("lightbox-image");
-
-lightbox = event => {
-  lightboxImage.src = event.srcElement.attributes[0].value;
-  overlay.appendChild(lightboxImage);
-  overlay.style.display = "flex";
-};
-
-/*
-        <section class="overlay">
-          <img id="lightbox-image" src="" alt="" />
-        </section>
-        */
-
-/* 
- --------- EXTRA ---------
- -  Show related tags
- -  Patricle JS background in header/hero section
- */
-
-/* ------------ GALLERI TEST --------------- */
-
-//let gallery = document.getElementsByClassName("gallery")[0];
