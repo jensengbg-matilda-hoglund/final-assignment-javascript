@@ -63,7 +63,7 @@ const lightbox = event => {
   });
 };
 
-// Switch page  FÖRENKLA SENARE MED BARA PILAR
+// SWITCH PAGE
 const selectPage = () => {
   const pages = document.getElementsByClassName("page");
   for (let i = 0; i < pages.length; i++) {
@@ -81,47 +81,20 @@ selectPage();
 document.getElementById("reset-search").addEventListener("click", function(e) {
   userSearch.value = "";
 });
-
-// --------------------------------------------------------
-
-// flickr custom search STYLES
 /*
-const imgStyle = () => {
-  const styleFilter = document.getElementsByClassName("style-button");
-  for (let i = 0; i < styleFilter.length; i++) {
-    styleFilter[i].addEventListener("click", async function(event) {
-      if (styleFilter[i].className === "checked") {
-        let styling = event.target.attributes[2].value;
-        let imgArray = await getData(api_key, userSearch, quantity, 1, styling);
-        let urlArray = createURL(imgArray);
-        createImage(urlArray);
-        imgArray = [];
-        urlArray = [];
-      }
-    });
-  }
+// COLOR_STYLE
+const switchStyle = () => {
+  const imageStyle = document.getElementById("color-list");
+  imageStyle.addEventListener("click", function(e) {
+    if (e.target.className === "style-button") {
+      e.target.classList.toggle("checked");
+    }
+    if (e.target == "checked") {
+      let style = event.srcElement.attributes[3].value;
+    }
+  });
 };
-imgStyle();
-//-----------------------------------------------------------*/
+switchStyle(style);
+*/
 
 // ------------------ THE FUCKING END OF MY SUPER FUCKING AWESOME CODE ------------- //
-
-/*     A T T    G Ö R A 
-
----------- MOBILE ----------
-
-- style IMG in html-lightbox
-
-- styla image galleri mobile (hover, shadow, border etc)
-
-- lägg till press enter på allt så den söker efter bilder
-
--------- DESKOP -----------
-
-- styla, responsivt m.m
-- ändra i  css display non på mobile etc.... även i JavaScript ändra disabled/selected
-- styla lightbox i desktop
-- lägg till färgsökningar som i flcikr :D :D :D
-
-
-*/

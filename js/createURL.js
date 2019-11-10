@@ -8,7 +8,6 @@ const createURL = imgArray => {
   let urlArray = imgArray.map(index => {
     return `https://farm${index.farm}.staticflickr.com/${index.server}/${index.id}_${index.secret}_${imageSize.value}.jpg`;
   });
-  console.log(urlArray); // ta bort sen
   return urlArray;
 };
 

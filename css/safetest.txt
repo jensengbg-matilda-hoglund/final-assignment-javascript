@@ -1,0 +1,38 @@
+/*---------- DESKTOP -------- */
+
+@media only screen and (min-width: 700px) {
+  body {
+    margin: 0 20%;
+    justify-content: center;
+    justify-items: center;
+  }
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0 1rem 0;
+    width: 60%;
+    height: 15rem;
+  }
+
+  .input-section {
+    border-bottom: 2px solid var(--border);
+  }
+
+  .advanced-settings {
+    border: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .color-list {
+    padding: 0.5rem;
+    border: none;
+    justify-content: space-between;
+    width: 20rem;
+  }
+
+  .page-settings {
+    justify-content: space-evenly;
+    width: 20rem;
+  }
+}

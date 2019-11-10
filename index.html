@@ -25,7 +25,7 @@
             <i id="" class="fa fa-search"></i>
           </button>
           <input
-            placeholder="Search by tags"
+            placeholder="Image search"
             type="text"
             class="search-input"
             id="search-field"
@@ -36,136 +36,152 @@
         </section>
 
         <!----------------    SETTINGS   ----------------------->
+        <section class="settings">
+          <section class="advanced-settings" id="advancedFilter">
+            <!------------- COLOR_CODES --------------->
+            <ul class="color-list">
+              <li
+                class="color-style"
+                role="button"
+                id="red"
+                value="0"
+                type="checkbox"
+              ></li>
 
-        <section class="advanced-settings" id="advancedFilter">
-          <ul class="style-list">
-            <li
-              class="style-button"
-              role="button"
-              id="black-and-white"
-              value="blckandwhite"
-            ></li>
-            <li
-              class="style-button"
-              role="button"
-              id="depth-of-field"
-              value="depthoffield"
-            ></li>
-            <li
-              class="style-button"
-              role="button"
-              id="minimalist"
-              value="minimalism"
-            ></li>
-            <li
-              class="style-button"
-              role="button"
-              id="patterns"
-              value="pattern"
-            ></li>
-          </ul>
-          <!------------- COLORS --------------->
-          <ul class="color-list">
-            <li class="style-button" role="button" id="red" value="0"></li>
+              <li class="color-style" role="button" id="orange" value="2"></li>
 
-            <li class="style-button" role="button" id="orange" value="2"></li>
+              <li
+                class="color-style"
+                role="button"
+                id="pale-pink"
+                value="b"
+              ></li>
 
-            <li
-              class="style-button"
-              role="button"
-              id="pale-pink"
-              value="b"
-            ></li>
+              <li
+                class="color-style"
+                role="button"
+                id="lemon-yellow"
+                value="4"
+              ></li>
 
-            <li
-              class="style-button"
-              role="button"
-              id="lemon-yellow"
-              value="4"
-            ></li>
+              <li
+                class="color-style"
+                role="button"
+                id="bus-yellow"
+                value="3"
+              ></li>
 
-            <li
-              class="style-button"
-              role="button"
-              id="bus-yellow"
-              value="3"
-            ></li>
+              <li class="color-style" role="button" id="green" value="5"></li>
 
-            <li class="style-button" role="button" id="green" value="5"></li>
+              <li class="color-style" role="button" id="cyan" value="7"></li>
 
-            <li
-              class="style-button"
-              role="button"
-              id="dark-green"
-              value="6"
-            ></li>
+              <li class="color-style" role="button" id="blue" value="8"></li>
 
-            <li class="style-button" role="button" id="cyan" value="7"></li>
+              <li class="color-style" role="button" id="violet" value="9"></li>
 
-            <li class="style-button" role="button" id="blue" value="8"></li>
+              <li class="color-style" role="button" id="pink" value="a"></li>
 
-            <li class="style-button" role="button" id="violet" value="9"></li>
+              <li class="color-style" role="button" id="grey" value="d"></li>
 
-            <li class="style-button" role="button" id="pink" value="a"></li>
+              <li class="color-style" role="button" id="black" value="e"></li>
+            </ul>
+            <!-----------------STYLES------------------>
+            <ul class="style-list">
+              <li
+                class="style-button"
+                role="button"
+                id="black-and-white"
+                value="blckandwhite"
+              ></li>
+              <li
+                class="style-button"
+                role="button"
+                id="depth-of-field"
+                value="depthoffield"
+              ></li>
+              <li
+                class="style-button"
+                role="button"
+                id="minimalist"
+                value="minimalism"
+              ></li>
+              <li
+                class="style-button"
+                role="button"
+                id="patterns"
+                value="pattern"
+              ></li>
+            </ul>
+          </section>
+          <section class="page-settings">
+            <select class="image-size" name="size" id="size">
+              <option class="mobile" value="s" hidden selected
+                >Image size</option
+              >
 
-            <li class="style-button" role="button" id="white" value="c"></li>
+              <option class="mobile" value="s">Small</option>
+              <option class="mobile" value="q">Medium</option>
+              <option class="mobile" value="n">Large</option>
 
-            <li class="style-button" role="button" id="grey" value="d"></li>
+              <option class="desktop" value="n" selected hidden
+                >Image size</option
+              >
+              <option class="desktop" value="n">Small</option>
+              <option class="desktop" value="z">Medium</option>
+              <option class="desktop" value="b">Large</option>
+            </select>
 
-            <li class="style-button" role="button" id="black" value="e"></li>
-          </ul>
-        </section>
-        <section class="page-settings">
-          <select class="image-size" name="size" id="size">
-            <option class="mobile" value="s" selected hidden>Image size</option>
-            <option class="mobile" value="s">Small</option>
-            <option class="mobile" value="q">Medium</option>
-            <option class="mobile" value="n">Large</option>
-            <option class="desktop" value="-" hidden>Image size</option>
-            <option class="desktop" value="m">Small</option>
-            <option class="desktop" value="-">Medium</option>
-            <option class="desktop" value="b">Large</option>
-          </select>
-          <select class="images-per-page" name="numberof" id="number-of-images">
-            <option value="24" selected hidden>Images per page</option>
-            <option value="24">24</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
-          <section class="page-section">
-            <i class="fas fa-caret-left"></i>
-            <p id="page-number">1</p>
-            <i class="fas fa-caret-right"></i>
+            <select
+              class="images-per-page"
+              name="numberof"
+              id="number-of-images"
+            >
+              <option value="25" selected hidden> Per page</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <!--
+            <select class="image-styles" name="sty" id="styles"
+              ><option value="" hidden>Select image style</option>
+              <option value="blackandwhite">Black & White</option>
+              <option value="pattern">Patterns</option>
+              <option value="minimalism">Minimalism</option>
+              <option value="depthoffield">Shallow depth of field</option>
+            </select>-->
+            <section class="page-section">
+              <ul class="page-list">
+                <li value="1" class="page selected" id="page-one">1</li>
+                <li value="2" class="page" id="page-two">2</li>
+                <li value="3" class="page" id="page-three">3</li>
+                <li value="4" class="page" id="page-four">4</li>
+                <li value="5" class="page" id="page-five">5</li>
+              </ul>
+            </section>
           </section>
         </section>
       </header>
-      <!------------ FILTERS/HEADING END ------------>
+      <main>
+        <!------------ FILTERS/HEADING END ------------>
 
-      <!------------------GALLERY-------------------->
+        <!------------------GALLERY-------------------->
 
-      <section id="flickr-gallery" class="gallery"></section>
+        <section id="flickr-gallery" class="gallery"></section>
 
-      <!------------------- PAGES ----------------
-      <section class="api-pages">
-        <ul class="page-list">
-          <li value="1" class="page" id="page-one">1</li>
-          <li value="2" class="page" id="page-two">2</li>
-          <li value="3" class="page" id="page-three">3</li>
-          <li value="4" class="page" id="page-four">4</li>
-          <li value="5" class="page" id="page-five">5</li>
-        </ul>
-      </section>-->
-
-      <!----------------- LIGHTBOX ----------------->
-      <section id="lightbox-overlay" class="overlay">
-        <img
-          src=""
-          id="lightbox-image"
-          class="lightbox-img"
-          alt="woops... something went much fucking wrong"
-        />
-      </section>
-
+        <!----------------- LIGHTBOX ----------------->
+        <section id="lightbox-overlay" class="overlay">
+          <img
+            src=""
+            id="lightbox-image"
+            class="lightbox-img"
+            alt="woops... something went much fucking wrong"
+          />
+        </section>
+      </main>
+      <footer href="#">
+        <a class="take-me-up" href="#top"><i class="fas fa-caret-up"></i></a>
+      </footer>
       <!------------------------------------------------>
     </div>
     <script type="module" src="js/index.js"></script>

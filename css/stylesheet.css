@@ -11,44 +11,36 @@ font-family: 'Lato', sans-serif;
 
 :root {
   --black: #2b2c2f;
-  --gallery: #e4e1f7;
-  --background: #f0f5ff;
+  --gallery: #fff6f1;
+  --background: #fff6f1;
+  --border: #131313;
+  --header: #fff6f1;
   --white: #e8f0ff;
-  --border: #2b2c2f;
+  --select: #fff6f1;
   --shadow: ;
 }
 
 body {
-  font-weight: 900;
   color: var(--white);
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   background: var(--background);
 }
 
-p {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
+:any-link {
   color: var(--black);
-  font-size: 0.75rem;
-  align-self: center;
 }
 
 .wrap {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  background-image: var(--background);
+  background: var(--background);
 }
 
 /* ------- HEADER SECTION ------- */
 .header-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 22vh;
   position: fixed;
-  background: var(--background);
+  background: var(--header);
 }
 
 /* ----- SERARCHBAR ------ */
@@ -64,6 +56,10 @@ p {
   font-size: 2rem;
   color: var(--black);
 }
+.search-button i:hover {
+  transform: scale(1.3);
+  transition: 0.3s;
+}
 
 /* Seach input field */
 .input-section {
@@ -73,8 +69,10 @@ p {
   height: 3rem;
   border: none;
   box-shadow: none;
-  background: var(--background);
-  border-bottom: 2px solid var(--border);
+  background: var(--header);
+  -webkit-box-shadow: 0px 10px 8px -6px rgba(189, 189, 189, 1);
+  -moz-box-shadow: 0px 10px 8px -6px rgba(189, 189, 189, 1);
+  box-shadow: 0px 10px 8px -6px rgba(189, 189, 189, 1);
 }
 
 .search-input {
@@ -92,9 +90,10 @@ p {
 
 .search-input::placeholder {
   padding-left: 1rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--black);
   font-weight: 300;
+  font-family: "Lato", sans-serif;
 }
 
 input[type="search"] {
@@ -122,6 +121,11 @@ input:-internal-autofill-selected {
   font-size: large;
 }
 
+.reset-icon:hover {
+  transform: scale(1.3);
+  transition: 0.3s;
+}
+
 /* Remove original search X */
 ::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -147,14 +151,35 @@ option:focus,
 
 .advanced-settings {
   display: flex;
-  flex-direction: row-reverse;
-  margin: 0.25rem;
+  padding: 0.5rem;
+  border-top: 2px solid var(--border);
+  width: 100%;
 }
 
 .style-list {
-  display: grid;
-  grid-template-columns: 40px 40px;
-  grid-template-rows: 40px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  list-style: none;
+  margin-left: 1rem;
+}
+
+/* --------COLOR_CODES------- */
+
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+}
+
+.color {
+  display: inline-block;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
 }
 
 #red {
@@ -175,9 +200,6 @@ option:focus,
 #green {
   background-color: #90e200;
 }
-#dark-green {
-  background-color: #00ab00;
-}
 #cyan {
   background-color: #00b2d4;
 }
@@ -190,9 +212,6 @@ option:focus,
 #pink {
   background-color: #f52394;
 }
-#white {
-  background-color: #ffffff;
-}
 #grey {
   background-color: #7c7c7c;
 }
@@ -200,10 +219,26 @@ option:focus,
   background-color: #000000;
 }
 
-.style-button {
+.style-button,
+.color-style {
   border: 2px solid var(--white);
   width: 40px;
   height: 40px;
+}
+.style-button:hover,
+.color-style:hover {
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+
+.style-button::after,
+.color-style::after {
+  border: 2px solid var(--border);
+}
+
+.style-button:active,
+.color-style:active {
+  border: 2px solid var(--border);
 }
 
 #black-and-white {
@@ -224,147 +259,113 @@ option:focus,
   background-size: cover;
 }
 
-/* options only for desktop mode */
-.desktop {
-  display: none;
-}
-/* --------COLOR CHECKBOXES-------- */
-
-.color-list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  justify-content: center;
-}
-
-.color {
-  display: inline-block;
-  border-radius: 3px;
+/* ----- PAGE SETTINGS ----- */
+select {
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  position: relative;
 }
-
-/* ----- SETTINGS START ----- */
-
 .page-settings {
   display: flex;
   padding: 0 0.5rem;
   height: 3em;
-  background: var(--background);
+  background: var(--header);
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--black);
   z-index: 2;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .image-size {
-  background: var(--background);
   border: none;
+  background: var(--select);
+  border-bottom: 2px solid var(--border);
   font-family: "Lato", sans-serif;
   font-weight: 600;
   color: var(--black);
   font-size: 1rem;
-  -webkit-appearance: none;
-  background-image: url(../img/down-arrow.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 0.9rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.4rem;
 }
 
 .images-per-page {
-  background: var(--background);
+  background: var(--select);
   border: none;
+  border-bottom: 2px solid var(--border);
+
   font-family: "Lato", sans-serif;
   font-weight: 600;
   color: var(--black);
   font-size: 1rem;
-  -webkit-appearance: none;
-  background-image: url(../img/down-arrow.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 0.9rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.4rem;
+}
+
+.image-styles {
+  border: none;
+  background: var(--select);
+  border-bottom: 2px solid var(--border);
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  color: var(--black);
+  font-size: 1rem;
+}
+
+/* options only for desktop mode */
+.desktop {
+  display: none;
 }
 
 .page-section {
   display: flex;
-  width: 5rem;
+  width: 7rem;
   justify-content: space-evenly;
   align-items: center;
-}
-.page-section i {
-  font-size: 1.5rem;
-  color: var(--black);
+  border-bottom: 2px solid var(--border);
 }
 
-#page-number {
-  font-size: 1rem;
-  font-weight: bolder;
+.page-list {
+  color: var(--black);
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  list-style: none;
+}
+.page {
+  font-size: 1.1rem;
+  margin-right: 0.6rem;
+}
+
+.page:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: all 0.3s ease-in-out;
 }
 
 /* --------------------- HEADER END -------------------- */
 
 /* --------------------- GALLLERY --------------------- */
+main {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 14rem;
+}
 
 .gallery {
   width: 100%;
-  height: 70vh;
-  margin-top: 25vh;
+  height: 60vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  overflow: scroll;
+  justify-content: space-around;
+  padding-bottom: 2rem;
 }
 
 /* each div for each url */
 .img-container {
   margin: 0.5rem;
-  transition: all 0.2s ease-in-out;
 }
 
 .gallery-img {
   width: 100%;
   object-fit: contain;
-}
-
-.gallery-img:hover {
-  transform: scale(1.5);
-}
-
-/* --------------------- PAGES ------------------- */
-.api-pages {
-  grid-row: 3 / 4;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 2.5rem;
-  bottom: 0;
-  position: fixed;
-}
-
-.page-list {
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-  align-self: center;
-  width: 10rem;
-  border-top: 1px solid var(--white);
-  cursor: pointer;
-}
-
-.page {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  padding: 8px;
-}
-.page:hover {
-  transform: scale(1.3);
-  color: var(--grey);
+  -webkit-box-shadow: 0px 3px 3px 3px rgba(100, 100, 100);
+  -moz-box-shadow: 0px 3px 3px 3px rgba(100, 100, 100);
+  box-shadow: 0px 3px 3px 3px rgba(100, 100, 100);
 }
 
 /*-------------------- LIGHTBOX -------------------- */
@@ -380,20 +381,9 @@ option:focus,
   left: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.548);
+  background: rgba(0, 0, 0, 0.897);
   justify-content: center;
-}
-
-.lightbox-close {
-  z-index: 3;
-  position: absolute;
-  display: flex;
-  color: var(--white);
-  opacity: 0.9;
-  font-size: 2rem;
-  align-self: flex-end;
-  height: 90%;
-  width: 15%;
+  opacity: 1;
 }
 
 .lightbox-img {
@@ -403,7 +393,102 @@ option:focus,
   height: auto;
   object-fit: cover;
   position: fixed;
-  background-image: url(../img/x.png);
-  background-attachment: fixed;
-  background-position: top;
+  border: 15px solid var(--white);
+}
+
+/* ----- FOOTER ----- */
+footer {
+  display: flex;
+  color: var(--black);
+  font-size: 2rem;
+  justify-content: center;
+  margin-left: 0.5rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  background: var(--background);
+  text-align: center;
+}
+
+footer i {
+  cursor: pointer;
+}
+
+.take-me-up {
+  cursor: pointer;
+}
+
+/*---------- DESKTOP -------- */
+
+@media only screen and (min-width: 700px) {
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: list-item;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 5rem 0 2.5rem 0;
+  }
+
+  .input-section {
+    width: 50%;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .advanced-settings {
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+  }
+
+  .style-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .color-list {
+    border: none;
+    justify-content: space-between;
+  }
+
+  .style-button,
+  .color-style {
+    margin: 0.25rem;
+    -webkit-box-shadow: 0px 10px 10px 0px rgba(134, 134, 134, 0.75);
+    -moz-box-shadow: 0px 10px 10px 0px rgba(134, 134, 134, 0.75);
+    box-shadow: 0px 10px 10px 0px rgba(134, 134, 134, 0.75);
+  }
+
+  .page-settings {
+    display: flex;
+    justify-content: space-evenly;
+    width: 22.5%;
+  }
+
+  .gallery {
+    width: 75%;
+    padding-top: 8rem;
+  }
+
+  .lightbox-img {
+    max-width: unset;
+  }
 }
