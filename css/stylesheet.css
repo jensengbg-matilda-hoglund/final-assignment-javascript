@@ -498,6 +498,11 @@ footer i:hover {
     padding-top: 8rem;
   }
 
+  .gallery-img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+
   .lightbox-img {
     max-width: unset;
   }
