@@ -13,7 +13,7 @@ document
   .addEventListener("click", async function(event) {
     let nextPage = event.srcElement.attributes[0].value;
     let imgArray = await getData(api_key, userSearch, quantity);
-    let urlArray = createURL(imgArray); // Now lets pass this array into the next function createURL.
+    let urlArray = createURL(imgArray);
     createImage(urlArray);
     imgArray = [];
     urlArray = [];
@@ -25,22 +25,22 @@ document
   .addEventListener("keydown", async function(event) {
     if (event.keyCode === 13) {
       let imgArray = await getData(api_key, userSearch, quantity);
-      let urlArray = createURL(imgArray); // Now lets pass this array into the next function createURL.
+      let urlArray = createURL(imgArray);
       createImage(urlArray);
     }
   });
 
 // DISPLAY GALLERY
-const gallerySection = document.getElementById("flickr-gallery"); // GLOBAL varable
+const gallerySection = document.getElementById("flickr-gallery");
 
 const createImage = urlArray => {
   for (let i = 0; i < urlArray.length; i++) {
     const newDiv = document.createElement("div"); // create new div element for each URL
-    const newImage = document.createElement("img"); // -||- img element
-    newDiv.className = "img-container"; // give div classname
-    gallerySection.appendChild(newDiv); // append div to my gallery-section
-    newImage.src = urlArray[i]; // give img an SRC from URL i created earlier
-    newImage.className = "gallery-img"; // give img classname
+    const newImage = document.createElement("img");
+    newDiv.className = "img-container";
+    gallerySection.appendChild(newDiv);
+    newImage.src = urlArray[i];
+    newImage.className = "gallery-img";
     newDiv.appendChild(newImage);
     newImage.addEventListener("click", function(event) {
       lightbox(event);
@@ -81,20 +81,5 @@ selectPage();
 document.getElementById("reset-search").addEventListener("click", function(e) {
   userSearch.value = "";
 });
-/*
-// COLOR_STYLE
-const switchStyle = () => {
-  const imageStyle = document.getElementById("color-list");
-  imageStyle.addEventListener("click", function(e) {
-    if (e.target.className === "style-button") {
-      e.target.classList.toggle("checked");
-    }
-    if (e.target == "checked") {
-      let style = event.srcElement.attributes[3].value;
-    }
-  });
-};
-switchStyle(style);
-*/
 
 // ------------------ THE FUCKING END OF MY SUPER FUCKING AWESOME CODE ------------- //
