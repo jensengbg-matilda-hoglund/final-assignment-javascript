@@ -81,5 +81,3 @@ selectPage();
 document.getElementById("reset-search").addEventListener("click", function(e) {
   userSearch.value = "";
 });
-
-// ------------------ THE FUCKING END OF MY SUPER FUCKING AWESOME CODE ------------- //
